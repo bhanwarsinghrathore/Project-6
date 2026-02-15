@@ -37,7 +37,7 @@ if uploaded_file:
 
     # Safety check
     if "Sales" in df.columns:
-        st.warning("⚠️ Remove 'Sales' column. This app predicts sales.")
+        st.warning("Remove 'Sales' column. This app predicts sales.")
         st.stop()
 
     # Create date features
@@ -47,7 +47,7 @@ if uploaded_file:
     try:
         preds = model.predict(df)
     except Exception as e:
-        st.error("❌ Feature mismatch. Ensure CSV has required columns.")
+        st.error("Feature mismatch. Ensure CSV has required columns.")
         st.stop()
 
     # Closed stores = 0 sales
@@ -56,7 +56,7 @@ if uploaded_file:
 
     df["Predicted_Sales"] = preds
 
-    st.subheader("✅ Predictions")
+    st.subheader("Predictions")
     st.dataframe(df.head())
 
     # Plot
@@ -77,3 +77,4 @@ if uploaded_file:
 
 else:
     st.info("Upload a CSV file to start forecasting.")
+
